@@ -13,6 +13,14 @@ export default defineConfig(async () => {
             target: 'http://localhost:5320/api',
             ws: true,
           },
+          '/stock-api': {
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/stock-api/, ''),
+            // mock代理目标地址
+            target: 'http://instock.hongdadata.com',
+            timeout: 60000,
+            ws: true,
+          },
         },
       },
     },
