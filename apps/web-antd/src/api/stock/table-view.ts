@@ -11,6 +11,10 @@ export namespace DemoTableApi {
     name: number;
     date: Date;
   }
+  export interface StockTableColumnsParams {
+    [key: string]: any;
+    table_name: string;
+  }
 }
 
 /**
@@ -27,4 +31,11 @@ async function getStockDataApi(params: DemoTableApi.StockDataParams) {
   return requestClient.get('/stock-api/instock/api_data', { params });
 }
 
-export { getExampleTableApi,getStockDataApi };
+/**
+ * 获取股票数据
+ */
+async function getStockTableColumnsApi(params: DemoTableApi.StockTableColumnsParams) {
+  return requestClient.get('/stock-api/instock/table/columns', { params });
+}
+
+export { getExampleTableApi,getStockDataApi,getStockTableColumnsApi };
